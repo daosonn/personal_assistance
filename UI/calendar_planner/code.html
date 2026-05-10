@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calendar Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light text-background-dark overflow-x-hidden min-h-screen flex flex-col">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 px-10 py-3 bg-white">
+<div class="flex items-center gap-4 text-background-dark">
+<div class="size-4">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-background-dark text-lg font-bold leading-tight tracking-[-0.015em]">Calendar Planner</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-gray-100 text-background-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-gray-200">
+<span class="material-symbols-outlined text-background-dark">add</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-gray-100 text-background-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-gray-200">
+<span class="material-symbols-outlined text-background-dark">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="A close up portrait photo of a professional woman smiling in bright lighting. Modern light mode aesthetic, clean background. Corporate, friendly mood." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARUNZykz0cJKWKC3WUzY0fH2xlW_3iZzBuJ0BQeaL6ZDzo_lKgPBF9Ej7VTQu_eKWtUxgumZkRFonlSgnX_zyt7c2t5X-83-iC8lEFbu8ytW2oElstFZPQ_fU9-6LpvC8FNF882BSrdtX_JM7lehCd3ZLonV6u2UOhyUqT-bCBsQfuuMOdlBjMDOE-_9f1nFeBv7ydB3exBeUHJuyK4o26AFQoho_56xiAeVd7BYP0UCftnq0kua_ZlWY5pH39MyM8Eyp4UDzNC-1m");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<div class="w-64 border-r border-gray-200 bg-white hidden md:flex flex-col flex-shrink-0 h-[calc(100vh-65px)] overflow-y-auto">
+<div class="p-4 flex flex-col gap-6">
+<div class="flex gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="A close up portrait photo of a professional woman smiling in bright lighting. Modern light mode aesthetic, clean background. Corporate, friendly mood." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmX6jnGIH53_59Z5NsNiFR77sgtEgFTJ3ikjooucKb0f7vTOdJ_tXosXOhtb4V0qwh7b2lSYH5X6w8FMc5qTp8DVeuyBP_c2cdA1JrZDaWR1jWFdeUqRnEiG8RzT0n4lABnfgG0Uh-VotxjzsO1h8_9uk3gPDY71eRKwjhSSqp8jZCfx8Neje1FyAPUr4u6MB1YSniRiOhrOOYJMUG4lHvlFENIq08q34BYofZWfsG7wfxBXIzz4KqbiK9Q48h9J2kjA_6vIA13Je2");'></div>
+<div class="flex flex-col justify-center">
+<h1 class="text-background-dark text-base font-medium leading-normal">Planner</h1>
+<p class="text-gray-500 text-sm font-normal leading-normal">User</p>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+<span class="truncate">Create Event</span>
+</button>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<p class="text-sm font-medium leading-normal font-bold">Calendar Planner</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl" href="#">
+<span class="material-symbols-outlined">check_box</span>
+<p class="text-sm font-medium leading-normal">Tasks</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<p class="text-sm font-medium leading-normal">Goals</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Analytics</p>
+</a>
+</div>
+<div class="pt-4 border-t border-gray-200">
+<h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-3">Mini Calendar</h3>
+<div class="px-2">
+<div class="flex items-center p-1 justify-between mb-2">
+<button class="text-gray-500 hover:text-primary"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<p class="text-background-dark text-sm font-bold leading-tight flex-1 text-center">October 2023</p>
+<button class="text-gray-500 hover:text-primary"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-xs">
+<div class="text-gray-400 font-medium py-1">S</div>
+<div class="text-gray-400 font-medium py-1">M</div>
+<div class="text-gray-400 font-medium py-1">T</div>
+<div class="text-gray-400 font-medium py-1">W</div>
+<div class="text-gray-400 font-medium py-1">T</div>
+<div class="text-gray-400 font-medium py-1">F</div>
+<div class="text-gray-400 font-medium py-1">S</div>
+<div class="text-gray-300 py-1">1</div>
+<div class="text-gray-300 py-1">2</div>
+<div class="text-gray-300 py-1">3</div>
+<div class="text-gray-300 py-1">4</div>
+<div class="bg-primary text-white rounded-full py-1 font-bold">5</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">6</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">7</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">8</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">9</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">10</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">11</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">12</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">13</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">14</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">15</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">16</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">17</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">18</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">19</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">20</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">21</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">22</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">23</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">24</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">25</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">26</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">27</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">28</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">29</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">30</div>
+<div class="text-gray-700 py-1 hover:bg-gray-100 rounded-full cursor-pointer">31</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-[calc(100vh-65px)] overflow-hidden bg-white">
+<!-- Top Toolbar -->
+<div class="flex flex-col border-b border-gray-200">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold text-background-dark">Oct 5 – 11, 2023</h2>
+<div class="flex bg-gray-100 rounded-lg p-1">
+<button class="px-4 py-1.5 text-sm font-semibold rounded-md bg-white shadow-sm text-background-dark">Week</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-md text-gray-500 hover:text-background-dark">Month</button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-purple-100 text-purple-700 text-sm font-semibold hover:bg-purple-200 transition-colors gap-1">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span>AI Auto-schedule</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-gray-100 text-background-dark text-sm font-semibold hover:bg-gray-200 transition-colors gap-1">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+<span>Suggest Slots</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-gray-100 text-background-dark text-sm font-semibold hover:bg-gray-200 transition-colors gap-1">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span>Detect Overload</span>
+</button>
+</div>
+</div>
+<!-- Day Headers -->
+<div class="grid grid-cols-[60px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] border-t border-gray-200 pl-4">
+<div class="w-[60px] border-r border-gray-100"></div> <!-- Time column spacer -->
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Thu</span>
+<span class="text-xl font-bold text-white bg-primary rounded-full size-8 flex items-center justify-center mt-1">5</span>
+</div>
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Fri</span>
+<span class="text-xl font-medium text-background-dark mt-1">6</span>
+</div>
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Sat</span>
+<span class="text-xl font-medium text-background-dark mt-1">7</span>
+</div>
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Sun</span>
+<span class="text-xl font-medium text-background-dark mt-1">8</span>
+</div>
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Mon</span>
+<span class="text-xl font-medium text-background-dark mt-1">9</span>
+</div>
+<div class="py-2 text-center border-r border-gray-100 flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Tue</span>
+<span class="text-xl font-medium text-background-dark mt-1">10</span>
+</div>
+<div class="py-2 text-center flex flex-col items-center">
+<span class="text-xs text-gray-500 uppercase font-medium">Wed</span>
+<span class="text-xl font-medium text-background-dark mt-1">11</span>
+</div>
+</div>
+</div>
+<!-- Calendar Grid (Scrollable) -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden relative bg-gray-50/30">
+<div class="grid grid-cols-[60px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] pl-4 min-w-[800px]">
+<!-- Timeline (24h) -->
+<div class="col-start-1 row-start-1 flex flex-col border-r border-gray-200 bg-white z-10 w-[60px]">
+<!-- Generate hours 00:00 to 23:00 -->
+<div class="h-16 relative"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">00:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">01:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">02:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">03:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">04:00</span></div>
+<!-- 05:00 Reset Marker Label -->
+<div class="h-16 relative border-t-2 border-primary border-dashed bg-primary/5">
+<span class="absolute -top-2.5 right-2 text-xs font-bold text-primary">05:00</span>
+<span class="absolute top-1 right-1 text-[10px] text-primary/70 uppercase font-semibold">Reset</span>
+</div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">06:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">07:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">08:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">09:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">10:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">11:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">12:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">13:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">14:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">15:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">16:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">17:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">18:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">19:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">20:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">21:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">22:00</span></div>
+<div class="h-16 relative border-t border-gray-100"><span class="absolute -top-2.5 right-2 text-xs text-gray-400">23:00</span></div>
+</div>
+<!-- Grid Lines and Day Columns -->
+<!-- We overlap the events on top of these columns using row-start-1 and margins/absolute positioning. -->
+<!-- Thu (Day 1) -->
+<div class="col-start-2 row-start-1 relative border-r border-gray-100">
+<!-- 5AM Reset Line spanning across -->
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<!-- Background Grid Lines -->
+<div class="h-16 border-t border-gray-100 opacity-0"></div> <!-- 00:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 01:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 02:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 03:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 04:00 -->
+<div class="h-16 border-t border-gray-100 bg-primary/5"></div> <!-- 05:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 06:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 07:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 08:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 09:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 10:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 11:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 12:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 13:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 14:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 15:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 16:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 17:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 18:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 19:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 20:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 21:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 22:00 -->
+<div class="h-16 border-t border-gray-100"></div> <!-- 23:00 -->
+<!-- Event: Japanese Study (07:00 - 08:30) -->
+<!-- top = 7 * 64px = 448px, height = 1.5 * 64px = 96px -->
+<div class="absolute top-[448px] left-1 right-2 h-[96px] bg-red-100 border border-red-200 rounded-md p-2 flex flex-col shadow-sm cursor-pointer group hover:shadow-md transition-shadow z-10">
+<div class="w-full h-1 bg-red-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute top-0.5 left-0"></div>
+<span class="text-xs font-semibold text-red-800">07:00 - 08:30</span>
+<span class="text-sm font-bold text-red-900 leading-tight">Kanji Practice</span>
+<span class="text-xs text-red-700 mt-auto flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">translate</span> Japanese</span>
+<div class="w-full h-1 bg-red-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute bottom-0.5 left-0"></div>
+</div>
+<!-- Event: Work Focus (10:00 - 12:00) -->
+<!-- top = 10 * 64px = 640px, height = 2 * 64px = 128px -->
+<div class="absolute top-[640px] left-1 right-2 h-[128px] bg-blue-100 border border-blue-200 rounded-md p-2 flex flex-col shadow-sm cursor-pointer group hover:shadow-md transition-shadow z-10">
+<div class="w-full h-1 bg-blue-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute top-0.5 left-0"></div>
+<span class="text-xs font-semibold text-blue-800">10:00 - 12:00</span>
+<span class="text-sm font-bold text-blue-900 leading-tight">Deep Work: Project X</span>
+<span class="text-xs text-blue-700 mt-auto flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">work</span> Work</span>
+<div class="w-full h-1 bg-blue-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute bottom-0.5 left-0"></div>
+</div>
+</div>
+<!-- Fri (Day 2) -->
+<div class="col-start-3 row-start-1 relative border-r border-gray-100">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<!-- Background Grid Lines (repeated for visual structure, normally generated in loop) -->
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+<!-- Event: AI Research (13:00 - 15:30) -->
+<!-- top = 13 * 64px = 832px, height = 2.5 * 64px = 160px -->
+<div class="absolute top-[832px] left-1 right-2 h-[160px] bg-purple-100 border border-purple-200 rounded-md p-2 flex flex-col shadow-sm cursor-pointer group hover:shadow-md transition-shadow z-10">
+<div class="w-full h-1 bg-purple-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute top-0.5 left-0"></div>
+<span class="text-xs font-semibold text-purple-800">13:00 - 15:30</span>
+<span class="text-sm font-bold text-purple-900 leading-tight">LLM Fine-tuning Research</span>
+<span class="text-xs text-purple-700 mt-auto flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">smart_toy</span> AI</span>
+<div class="w-full h-1 bg-purple-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute bottom-0.5 left-0"></div>
+</div>
+</div>
+<!-- Sat (Day 3) -->
+<div class="col-start-4 row-start-1 relative border-r border-gray-100">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+<!-- Event: Personal (09:00 - 10:00) -->
+<!-- top = 9 * 64px = 576px, height = 1 * 64px = 64px -->
+<div class="absolute top-[576px] left-1 right-2 h-[64px] bg-green-100 border border-green-200 rounded-md p-2 flex flex-col shadow-sm cursor-pointer group hover:shadow-md transition-shadow z-10">
+<div class="w-full h-1 bg-green-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute top-0.5 left-0"></div>
+<span class="text-xs font-semibold text-green-800">09:00 - 10:00</span>
+<span class="text-sm font-bold text-green-900 leading-tight truncate">Gym Workout</span>
+<div class="w-full h-1 bg-green-300 rounded-full cursor-ns-resize opacity-0 group-hover:opacity-100 absolute bottom-0.5 left-0"></div>
+</div>
+</div>
+<!-- Empty Days (4,5,6,7) for visual structure -->
+<div class="col-start-5 row-start-1 relative border-r border-gray-100">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+</div>
+<div class="col-start-6 row-start-1 relative border-r border-gray-100">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+</div>
+<div class="col-start-7 row-start-1 relative border-r border-gray-100">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+</div>
+<div class="col-start-8 row-start-1 relative">
+<div class="absolute top-[320px] w-full border-t-2 border-primary border-dashed z-0 opacity-50"></div>
+<div class="h-16 border-t border-gray-100 opacity-0"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100 bg-primary/5"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div><div class="h-16 border-t border-gray-100"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Quick Add Panel (Right Sidebar) -->
+<aside class="w-80 border-l border-gray-200 bg-white flex flex-col h-[calc(100vh-65px)] overflow-y-auto shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] z-20 hidden lg:flex">
+<div class="p-5 border-b border-gray-100 flex items-center justify-between">
+<h3 class="font-bold text-background-dark text-lg">Quick Add</h3>
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined text-xl">close</span></button>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Event Title</label>
+<input class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-10 px-3 border outline-none" placeholder="e.g., Team Meeting" type="text"/>
+</div>
+<div class="flex gap-3">
+<div class="flex-1">
+<label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+<div class="relative">
+<input class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-10 px-3 border outline-none" type="date" value="2023-10-05"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Start Time</label>
+<input class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-10 px-3 border outline-none" type="time" value="09:00"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">End Time</label>
+<input class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-10 px-3 border outline-none" type="time" value="10:00"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1 flex justify-between">
+<span>Duration</span>
+<span class="text-xs text-gray-400 font-normal">Auto-syncs</span>
+</label>
+<select class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-10 px-3 border outline-none bg-white">
+<option>30 minutes</option>
+<option selected="">1 hour</option>
+<option>1.5 hours</option>
+<option>2 hours</option>
+<option>Custom...</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 border border-red-200 flex items-center gap-1 hover:bg-red-200">
+<div class="size-2 rounded-full bg-red-500"></div> Japanese
+                </button>
+<button class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-200 flex items-center gap-1 hover:bg-purple-200">
+<div class="size-2 rounded-full bg-purple-500"></div> AI
+                </button>
+<button class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200 flex items-center gap-1 hover:bg-blue-200">
+<div class="size-2 rounded-full bg-blue-500"></div> Work
+                </button>
+<button class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-200 flex items-center gap-1 hover:bg-green-200">
+<div class="size-2 rounded-full bg-green-500"></div> Personal
+                </button>
+</div>
+</div>
+<button class="mt-4 w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-primary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+            Save Event
+        </button>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body></html>

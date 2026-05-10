@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Today Dashboard - Planner Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ec5b13",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221610",
+            },
+            fontFamily: {
+              "display": ["Public Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Public Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background-light text-background-dark min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full bg-background-light group/design-root overflow-x-hidden">
+<!-- SideNavBar -->
+<div class="flex h-full min-h-[700px] flex-col justify-between bg-white border-r border-gray-200 p-4 w-64 shrink-0 hidden md:flex fixed top-0 left-0 bottom-0 z-10">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center px-3 py-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="A clean, minimalist circular avatar graphic featuring a subtle abstract geometric pattern in warm orange tones against a light cream background. The design is modern, flat, and professional, suitable for a user profile picture in a sleek light-mode application." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHsHkoKcN3jNTzzeItY-4BPrx-SS-V9-DoL4v1mxbkCej32ENFiYbajSPbE9vcFtlU5ihJzAREBFMxDT-6T2u9GUPd1Wa-T6Bb0gbN1_Y6hjb3tnjw4WuhYa0IGxH-NNlMFHa-HT-hbSW_DUTN_iI25WfA6jAnCD6FpYJmVKWn4BiR8zSkplzqbg5w7Yzmfva5RfnxfdqSpLvR_dt2wO7gL-6vdutAHCYLr6EhKCYxWMqKm7K2KuEFB3Uzn-Kqs5-DtydO6Yv2pKNy");'></div>
+<div class="flex flex-col">
+<h1 class="text-background-dark text-base font-bold leading-normal">Planner Pro</h1>
+<p class="text-gray-500 text-sm font-normal leading-normal">Stay focused</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary">
+<div class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</div>
+<p class="text-sm font-bold leading-normal">Today</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl cursor-pointer transition-colors">
+<div class="material-symbols-outlined">calendar_month</div>
+<p class="text-sm font-medium leading-normal">Upcoming</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl cursor-pointer transition-colors">
+<div class="material-symbols-outlined">grid_view</div>
+<p class="text-sm font-medium leading-normal">Matrix</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl cursor-pointer transition-colors">
+<div class="material-symbols-outlined">lightbulb</div>
+<p class="text-sm font-medium leading-normal">Insights</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-xl cursor-pointer transition-colors">
+<div class="material-symbols-outlined">settings</div>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</div>
+</div>
+</div>
+<div class="px-3 py-2 text-xs text-gray-400">
+<p>Day resets at 05:00 AM</p>
+</div>
+</div>
+<!-- Main Content Container -->
+<div class="layout-container flex h-full grow flex-col md:pl-64">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 bg-white px-6 py-4 sticky top-0 z-20">
+<div class="flex items-center gap-4 text-background-dark">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Today</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-gray-200 bg-gray-50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
+<div class="text-gray-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl bg-transparent border-none focus:outline-0 focus:ring-0 h-full placeholder:text-gray-400 px-4 pl-2 text-sm font-normal leading-normal text-background-dark" placeholder="Search tasks..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="md:hidden flex items-center justify-center rounded-xl h-10 w-10 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="A modern, abstract user profile avatar with smooth geometric shapes in warm orange and soft cream colors. The image is clean, bright, and fits seamlessly into a contemporary light-mode web interface." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDl0x0p6aJJ24fe_qSQsdNhzCBFmK2OBTI6F0xKA5RCcsEOP5Qsy4Fghd4Bsrzdpw--I4XNuHRBjyy13JlZPoFv6te0BVRDmOr7ltgI7j51dl2kMN7J_Jv-172_UyDgbsU93y4xfVdJWllRg_X4PPOnQQqN0iWNHDnFfzLAZb7ekMMU8hSW-9F3JQ9FtVI1QxZNc9NTlnXuStb_Oh4X_vjSB8vp45w1o5m-xVGw7e3uu0X5ur9GG2tL5IqzpZQcuX8H7G9rgc3xGi8r");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<div class="flex flex-1 justify-center py-6 px-4 md:px-8 overflow-y-auto">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-8">
+<!-- Hero Section -->
+<div class="@container">
+<div class="flex min-h-[240px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-end p-8 relative overflow-hidden" data-alt="A bright, airy modern workspace bathed in morning sunlight. A sleek desk with a laptop and a potted plant sits against a large window, conveying a sense of fresh start, productivity, and focus. The lighting is warm and inspiring, fitting a light-mode productivity application." style='background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMK-UI8YC6z_pvuJJXDGDmP8Z65n9c3OvjclJSkWgby99R6kHP3jg-ERTjtUdX0WEhzGUS-9CT7b92zPxCcpVqJGdbUO_-8tyh0-1Hv8FbWfTCRpw1fDeLEAjjfrYkZIqDth3uxo89ZTCCeDhcwwRTCLpsRZtStW3Z6KGFSW3omou74ufEv2OuGSN9w-FnP6AccKU6_0BxiS3ZuQrdltyVR8nvLl4fbqVK05JybcLzNVGGjSpGxP0YIHv2Q6xKXalP1rfHp_czWCwm");'>
+<div class="relative z-10 flex flex-col gap-2 text-left">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                        AI Plan Ready
+                                    </span>
+</div>
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">
+                                    Good morning! Let's crush today.
+                                </h1>
+<h2 class="text-white/90 text-sm md:text-base font-normal max-w-2xl">
+                                    Your schedule is optimized. Focus on 3 high-priority tasks this morning to maintain momentum.
+                                </h2>
+</div>
+</div>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white border border-gray-200 shadow-sm">
+<div class="flex items-center justify-between text-gray-500 mb-2">
+<span class="material-symbols-outlined">checklist</span>
+</div>
+<p class="text-gray-500 text-sm font-medium">Total Tasks</p>
+<p class="text-background-dark text-3xl font-black">12</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white border border-gray-200 shadow-sm">
+<div class="flex items-center justify-between text-green-500 mb-2">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<p class="text-gray-500 text-sm font-medium">Completed</p>
+<p class="text-background-dark text-3xl font-black">3</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white border border-gray-200 shadow-sm">
+<div class="flex items-center justify-between text-blue-500 mb-2">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<p class="text-gray-500 text-sm font-medium">Focus Time</p>
+<p class="text-background-dark text-3xl font-black">4.5h</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white border border-gray-200 shadow-sm">
+<div class="flex items-center justify-between text-purple-500 mb-2">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<p class="text-gray-500 text-sm font-medium">Estimated</p>
+<p class="text-background-dark text-3xl font-black">6.2h</p>
+</div>
+</div>
+<!-- Layout Grid: 2 Columns on Desktop -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Tasks & Matrix -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- AI Summary Card -->
+<div class="flex flex-col md:flex-row items-stretch justify-between gap-6 rounded-xl bg-primary/5 border border-primary/20 p-6 shadow-sm">
+<div class="flex flex-col gap-3 flex-1">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">smart_toy</span>
+<h3 class="text-lg font-bold">AI Assistant Insights</h3>
+</div>
+<p class="text-gray-700 text-sm leading-relaxed">
+                                        Your morning blocks are quite dense. I've noticed you tend to lose focus after 90 minutes. Consider taking a 15-minute break at 11:00 AM before starting your deep work session on the 'Q3 Report'.
+                                    </p>
+<div class="mt-2 flex gap-2">
+<button class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-lg hover:bg-primary/20 transition-colors">Accept Schedule</button>
+<button class="text-xs font-semibold text-gray-600 bg-gray-100 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition-colors">Adjust</button>
+</div>
+</div>
+</div>
+<!-- Task List -->
+<div class="flex flex-col gap-4 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-gray-100 pb-4">
+<h3 class="text-xl font-bold text-background-dark">Today's Tasks</h3>
+<button class="text-primary flex items-center gap-1 text-sm font-semibold hover:bg-primary/5 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Task
+                                    </button>
+</div>
+<!-- Tabs -->
+<div class="flex gap-4 border-b border-gray-100">
+<button class="pb-2 text-sm font-bold text-primary border-b-2 border-primary">Active (9)</button>
+<button class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-700">All (12)</button>
+<button class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-700">Done (3)</button>
+</div>
+<!-- Task Items -->
+<div class="flex flex-col gap-3 mt-2">
+<!-- High Priority Task -->
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-colors group">
+<button class="mt-0.5 text-gray-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-background-dark">Draft Q3 Financial Report</p>
+<span class="text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-100">High</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 09:00 - 11:00</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">folder</span> Finance</span>
+</div>
+</div>
+</div>
+<!-- Medium Priority Task -->
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-colors group">
+<button class="mt-0.5 text-gray-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-background-dark">Review Team OKRs</p>
+<span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-100">Med</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 11:30 - 12:30</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">folder</span> Management</span>
+</div>
+</div>
+</div>
+<!-- Low Priority Task -->
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-colors group">
+<button class="mt-0.5 text-gray-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-background-dark">Reply to vendor emails</p>
+<span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">Low</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 14:00 - 14:30</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">folder</span> Comms</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Timeline & Progress -->
+<div class="flex flex-col gap-8">
+<!-- Progress Section -->
+<div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm flex flex-col gap-5">
+<h3 class="text-lg font-bold text-background-dark border-b border-gray-100 pb-2">Daily Progress</h3>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-gray-600">Task Completion</span>
+<span class="text-background-dark font-bold">25%</span>
+</div>
+<div class="w-full bg-gray-100 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-gray-600">Deep Work</span>
+<span class="text-background-dark font-bold">1.5h / 4h</span>
+</div>
+<div class="w-full bg-gray-100 rounded-full h-2">
+<div class="bg-purple-500 h-2 rounded-full" style="width: 37%"></div>
+</div>
+</div>
+</div>
+<!-- Mini Timeline -->
+<div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark border-b border-gray-100 pb-2">Agenda</h3>
+<div class="relative border-l-2 border-gray-100 ml-3 flex flex-col gap-6 py-2">
+<!-- Timeline Item: Past -->
+<div class="relative pl-6 opacity-60">
+<div class="absolute w-3 h-3 bg-gray-300 rounded-full -left-[7px] top-1.5 border-2 border-white"></div>
+<p class="text-xs font-bold text-gray-500 mb-0.5">08:00 AM</p>
+<p class="text-sm font-medium text-gray-600 line-through">Daily Standup</p>
+</div>
+<!-- Timeline Item: Current -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1.5 border-2 border-white ring-2 ring-primary/30"></div>
+<p class="text-xs font-bold text-primary mb-0.5">09:00 AM - NOW</p>
+<div class="bg-primary/5 border border-primary/20 rounded p-2 mt-1">
+<p class="text-sm font-semibold text-background-dark">Draft Q3 Financial Report</p>
+</div>
+</div>
+<!-- Timeline Item: Future (Free Slot Alert) -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-[7px] top-1.5 border-2 border-white"></div>
+<p class="text-xs font-bold text-gray-500 mb-0.5">11:00 AM</p>
+<div class="flex items-center gap-2 text-xs font-medium text-green-600 bg-green-50 p-1.5 rounded border border-green-100 mt-1">
+<span class="material-symbols-outlined text-[14px]">coffee</span> Free slot (30m)
+                                        </div>
+</div>
+<!-- Timeline Item: Future -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-[7px] top-1.5 border-2 border-white"></div>
+<p class="text-xs font-bold text-gray-500 mb-0.5">11:30 AM</p>
+<p class="text-sm font-medium text-gray-700">Review Team OKRs</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

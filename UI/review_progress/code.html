@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ec5b13",
+            "background-light": "#f8f6f6",
+            "background-dark": "#221610",
+          },
+          fontFamily: {
+            "display": ["Public Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light font-display text-background-dark antialiased">
+<div class="relative flex h-auto min-h-screen w-full bg-background-light">
+<!-- SideNavBar -->
+<div class="w-64 flex-shrink-0 bg-background-dark h-screen sticky top-0 flex flex-col justify-between p-4 shadow-lg">
+<div class="flex flex-col gap-6">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="A small, stylized circular profile picture showing a sleek, modern avatar illustration. The avatar is set against a vibrant, energetic orange background that matches the primary color role of the UI. The art style is flat, minimal, and highly professional, fitting a modern productivity dashboard." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD1gixuWX0EZ11IiwTdflUUORElh5wWwzNj8sMQTVV7wWSPOgNVbYeFCP13vRs25SXU4JjRWARWwuXrS_pmYbRZ0qpBxVdL0qr24CTVKvaa8dGxl5l5qWmOmXmtCEuryyndfPiWvR1MeFuYXWKAB3w2xfRtQp-SEKqe7FioxTmyYxdFjDw-8hQqQ4t_oUjh307zUpL6fg00rgO4ThDy1VQ8LvJyHnTxeDPR7DKRVenMNbKgIHh0QvM5RRdHzFLnCJa27MpdxLGGsicN");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-medium leading-normal">TaskMaster</h1>
+<p class="text-gray-400 text-sm font-normal leading-normal">Stay productive</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">house</span>
+<p class="text-white text-sm font-medium leading-normal">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">check_box</span>
+<p class="text-white text-sm font-medium leading-normal">Tasks</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<p class="text-white text-sm font-medium leading-normal">Schedule</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<p class="text-white text-sm font-medium leading-normal">Review &amp; Progress</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">settings</span>
+<p class="text-white text-sm font-medium leading-normal">Settings</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<div class="max-w-[1200px] mx-auto px-8 py-6 flex flex-col gap-8">
+<!-- Header & Date Selector -->
+<header class="flex items-center justify-between border-b border-gray-200 pb-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">insights</span>
+<h2 class="text-background-dark text-2xl font-bold leading-tight">Review &amp; Progress</h2>
+</div>
+<div class="flex bg-gray-100 rounded-lg p-1">
+<label class="flex cursor-pointer h-10 items-center justify-center rounded-md px-4 has-[:checked]:bg-white has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-600 text-sm font-medium transition-all">
+<span>Today</span>
+<input checked="" class="invisible w-0" name="date-select" type="radio" value="Today"/>
+</label>
+<label class="flex cursor-pointer h-10 items-center justify-center rounded-md px-4 has-[:checked]:bg-white has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-600 text-sm font-medium transition-all">
+<span>Yesterday</span>
+<input class="invisible w-0" name="date-select" type="radio" value="Yesterday"/>
+</label>
+<label class="flex cursor-pointer h-10 items-center justify-center rounded-md px-4 has-[:checked]:bg-white has-[:checked]:shadow-sm has-[:checked]:text-primary text-gray-600 text-sm font-medium transition-all">
+<span>Custom Date</span>
+<input class="invisible w-0" name="date-select" type="radio" value="Custom Date"/>
+</label>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Reflections & Daily Logging -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<!-- Daily Reflection Summary -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark">Daily Reflection</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<span class="block text-3xl font-bold text-primary">85%</span>
+<span class="text-sm text-gray-500 font-medium">Completion</span>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<span class="material-symbols-outlined text-3xl text-yellow-500" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
+<span class="block text-sm text-gray-500 font-medium mt-1">Mood: Good</span>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 text-center col-span-2">
+<div class="flex items-center justify-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">battery_charging_80</span>
+<span class="font-bold text-background-dark">Energy: High</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+<div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feedback Input -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark">Log Feedback</h3>
+<div class="flex flex-col gap-3">
+<label class="text-sm font-medium text-gray-700">Focus Quality</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-medium">Low</button>
+<button class="flex-1 py-2 rounded-md bg-primary text-white text-sm font-medium shadow-sm">Medium</button>
+<button class="flex-1 py-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-medium">High</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<label class="text-sm font-medium text-gray-700">Blockers &amp; Notes</label>
+<textarea class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary text-sm p-3 bg-gray-50 min-h-[100px] resize-none" placeholder="What slowed you down today?"></textarea>
+</div>
+<button class="w-full bg-background-dark text-white rounded-lg py-3 font-medium hover:bg-opacity-90 transition-opacity mt-2">Save Reflection</button>
+</section>
+<!-- Daily Review Log History -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark flex items-center justify-between">
+                Review Log 
+                <span class="material-symbols-outlined text-gray-400 text-sm cursor-pointer hover:text-primary">open_in_new</span>
+</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-background-dark">Yesterday</span>
+<span class="text-xs text-gray-500">Oct 24 • Mood: Great</span>
+</div>
+<span class="text-primary font-bold text-sm">92%</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-background-dark">Oct 23</span>
+<span class="text-xs text-gray-500">Mood: Okay</span>
+</div>
+<span class="text-gray-600 font-bold text-sm">65%</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-background-dark">Oct 22</span>
+<span class="text-xs text-gray-500">Mood: Good</span>
+</div>
+<span class="text-primary font-bold text-sm">88%</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: AI Insights, Charts, & Task History -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Visual Charts Section -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark mb-2">Trends &amp; Activity</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<h4 class="text-sm font-medium text-gray-500">Growth/Completion %</h4>
+<div class="w-full h-48 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center bg-cover bg-center" data-alt="A clean, modern line chart graph showing an upward trending line. The chart uses a soft white background with a vibrant orange line representing growth, matching the primary color role of the UI. Subtle grid lines are visible. The overall aesthetic is professional, data-driven, and minimalist, typical of a high-end dashboard interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBlwFdlkIWCoBuCwVyHmbtvv790E-VkO9TwLH-hciPHZEvMnjYHyGVwd6uYpz6vS33M4w0stkfD_VnM7LtrsKebhrivmvnSIkJA8bSQCqHj80nasv0WfLAvm2R8PwRsfYiXVqK6JPJ4jFNfxiY8593EXgXI7dIsRiQkRtvRA3TBI8nPMxBv2B1Juvk4y1Bpx2HstwtupeEUh5kuxBqrNDWKjyeLqSey4VTmmRBGLjMOracN1W_nzjvheAHKn-W5oynawf5iYue5mjkZ');">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-sm font-medium text-gray-500">Activity Heatmap</h4>
+<div class="w-full h-48 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center bg-cover bg-center" data-alt="A stylized activity heatmap chart, similar to a GitHub contribution graph. The background is a clean white. The squares range in color from light, pale orange to deep, intense primary orange, indicating varying levels of activity. The design is abstract, geometric, and perfectly aligns with a light-mode, modern productivity tool aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZzGXgNPDJ83X8O_jmbFzpdTsik1IY3Mayd47rv5m3W_OicWUgVi895kcy_Ddd260YdCYH0Rmu-GkKiS6dv6UDNtUvBbmxH6ZV72ir3AdKnjKEsJdsOyJ1Zc8QXNLQ5aRHYPVLP5peWcL3whY12VDqcBaDyE_bB9DbxebcdUY7etdD91wD4v616ye4k1Xh7uhyhTvorwCRgWZcNa0TjsWVgc4D9yWJ3SYn9kjLsV6DmLF9geAaupMJCtVgNihQM5yBcGbNsOAmR02u');">
+</div>
+</div>
+</div>
+</section>
+<!-- AI Category Summaries -->
+<section class="flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark">Category Summaries &amp; AI Insights</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-orange-50 rounded-bl-full flex items-start justify-end p-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">translate</span>
+<h4 class="text-base font-bold text-background-dark">Japanese Study</h4>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-500">
+<span class="material-symbols-outlined text-base">schedule</span>
+<span>1h 30m spent</span>
+</div>
+<p class="text-sm text-gray-600 mt-2 bg-gray-50 p-3 rounded-lg border-l-2 border-primary">
+                    Consistent vocabulary practice. Recommend focusing on Kanji tomorrow to balance skill progression.
+                  </p>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-orange-50 rounded-bl-full flex items-start justify-end p-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">work</span>
+<h4 class="text-base font-bold text-background-dark">Client Projects</h4>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-500">
+<span class="material-symbols-outlined text-base">schedule</span>
+<span>4h 15m spent</span>
+</div>
+<p class="text-sm text-gray-600 mt-2 bg-gray-50 p-3 rounded-lg border-l-2 border-primary">
+                    High productivity on core deliverables. Consider shifting administrative tasks to lower-energy periods.
+                  </p>
+</div>
+</div>
+</section>
+<!-- Task History -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
+<h3 class="text-lg font-bold text-background-dark">Task History</h3>
+<div class="flex flex-col gap-4">
+<!-- Completed -->
+<div>
+<h4 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Completed (4)
+                  </h4>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100 hover:border-gray-200 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-medium text-background-dark line-through decoration-gray-400">Review PR #1042</span>
+</div>
+<span class="text-xs text-gray-500 bg-white px-2 py-1 rounded border border-gray-200">Projects</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100 hover:border-gray-200 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-medium text-background-dark line-through decoration-gray-400">WaniKani Reviews</span>
+</div>
+<span class="text-xs text-gray-500 bg-white px-2 py-1 rounded border border-gray-200">Japanese</span>
+</div>
+</div>
+</div>
+<!-- Postponed / Cancelled -->
+<div class="mt-2">
+<h4 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span> Postponed (1)
+                  </h4>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-3 bg-orange-50/50 rounded-lg border border-orange-100 hover:border-orange-200 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-yellow-600" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-sm font-medium text-background-dark">Update Resume</span>
+</div>
+<span class="text-xs text-yellow-700 bg-yellow-100/50 px-2 py-1 rounded border border-yellow-200">Personal</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
