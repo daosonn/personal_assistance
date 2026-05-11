@@ -16,6 +16,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(result);
   } catch (error) {
+    console.error("daily_summary failed", error);
     return NextResponse.json(
       {
         message:

@@ -107,7 +107,9 @@ export function TodayDashboard() {
         })
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.message ?? "AI planning failed.");
+      if (!response.ok) {
+        throw new Error([result.message, result.detail].filter(Boolean).join(" "));
+      }
       const data = result.data;
       const sanitized = sanitizePlan(data, date);
       const plan: DailyPlan = {

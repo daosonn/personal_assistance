@@ -42,7 +42,11 @@ async function writeTrace(trace: Omit<AITrace, "id" | "createdAt" | "dayKey" | "
     dayKey: getWorkingDayKey(new Date(createdAt)),
     cost: estimateCost(trace.provider, trace.usage)
   };
-  await appendAITrace(fullTrace);
+  try {
+    await appendAITrace(fullTrace);
+  } catch (error) {
+    console.warn("AI trace persistence failed; continuing with model result.", error);
+  }
 }
 
 async function readResponse(response: Response) {
